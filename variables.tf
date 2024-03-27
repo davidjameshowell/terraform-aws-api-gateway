@@ -17,6 +17,17 @@ variable "endpoint_type" {
   }
 }
 
+variable "put_rest_api_mode" {
+  type        = string
+  description = "Mode of the PutRestApi operation when importing an OpenAPI specification via the body argument "
+  default     = "merge"
+
+  validation {
+    condition     = contains(["merge", "overwrite", "PRIVATE"], var.put_rest_api_mode)
+    error_message = "Valid values for var: put_rest_api_mode are (merge, overwrite)."
+  }
+}
+
 variable "logging_level" {
   type        = string
   description = "The logging level of the API. One of - OFF, INFO, ERROR"

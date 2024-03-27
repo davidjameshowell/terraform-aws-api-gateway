@@ -12,6 +12,7 @@ resource "aws_api_gateway_rest_api" "this" {
   name = module.this.id
   body = jsonencode(var.openapi_config)
   tags = module.this.tags
+  put_rest_api_mode = var.put_rest_api_mode
 
   endpoint_configuration {
     types = [var.endpoint_type]
